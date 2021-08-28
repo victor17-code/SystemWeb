@@ -86,13 +86,13 @@ include './footer.php';
         //$('#example1').DataTable()
         $('#example1').DataTable({
             'buttons': [
-                'excel', 'pdf', 'print'
+                'excel',  'pdf', 'print'
             ],
             'paging': true,
             'lengthChange': true,
             'searching': true,
             'ordering': true,
-            'info': false,
+            'info': true,
             'autoWidth': true,
             'dom': 'Bfrtip',
             'language': {

@@ -63,9 +63,9 @@ include './header.php';
                                             <td><?php echo $Consulta['fecha']; ?></td>
                                             <td><?php echo $Consulta['precio']; ?></td>
                                             <td><?php echo $Consulta['pesototal']; ?></td>
-                                            <td><?php echo $Consulta['descuentos']; ?></td>
-                                            <td><?php echo $Consulta['totalpagar']; ?></td>
-                                            <td><a type="submit" href="#" class="btn btn-success"><i class="far fa-eye"></i></a></td>
+                                            <td><?php echo round($Consulta['descuentos'],2); ?></td>
+                                            <td><?php echo round($Consulta['totalpagar'],2); ?></td>
+                                            <td><a type="submit" href="#" class="btn btn-success"><i class="far fa-file-pdf"></i></a></td>
                                         </tr>
                                     <?php } ?>
                                 </table>

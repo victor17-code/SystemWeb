@@ -50,8 +50,10 @@ if (isset($_POST['ingresar'])) {
         <!-- Google Font -->
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-    </head>
+    </head>    
     <body class="hold-transition login-page" style="background-image:url(../imagenes/FONDO-LOGIN.jpeg)">
+        <!--        <div id="alertSi" class="alert alert-success alert-dismissable fade show">Login OK</div>
+                <div id="alertNo" class="alert alert-danger" role="alert">complete los datos</div>-->
         <div class="login-box">
             <!--  <div class="login-logo">
                   <a href="#"><b> <img src="../imagenes/olpasa-logo.PNG" style="width: 350px; height: 150px"> </a>
@@ -62,11 +64,11 @@ if (isset($_POST['ingresar'])) {
 
                 <form action="" method="post">
                     <div class="form-group has-feedback">
-                        <input  class="form-control" placeholder="Usuario" name="nom_usuario">
+                        <input id="user" class="form-control" placeholder="Usuario" name="nom_usuario">
                         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                     </div>
                     <div class="form-group has-feedback">
-                        <input type="password" class="form-control" placeholder="Contraseña" name="pass">
+                        <input id="pass" type="password" class="form-control" placeholder="Contraseña" name="pass">
                         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                     </div>
                     <div class="row">
@@ -79,8 +81,8 @@ if (isset($_POST['ingresar'])) {
                         </div>
                         <!-- /.col -->
                         <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat" name="ingresar">Ingresar</button>
-                        </div>
+                            <button type="submit" class="btn btn-primary btn-block btn-flat" name="ingresar">Ingresar</button>                           
+                        </div>                       
                         <!-- /.col -->
                     </div>
                 </form>
@@ -108,5 +110,25 @@ if (isset($_POST['ingresar'])) {
                 });
             });
         </script>
+<!--        <script>
+            $(document).ready(function () {
+                $("#alertSi").hide();
+                $("#alertNo").hide();
+                $("#form1").submit(function (e) {
+                    e.preventDefault();
+                    user = $.trim($("#user").val());
+                    pass = $.trim($("#pass").val());
+                    if (user.length > 0 && pass.length > 0) {
+                        $("#alertSi").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#alertSi").slideUp(500);
+                        });
+                    } else {
+                        $("#alertNo").fadeTo(2000, 500).slideUp(500, function () {
+                            $("#alertNo").slideUp(500);
+                        });
+                    }
+                });
+            });
+        </script>-->
     </body>
 </html>

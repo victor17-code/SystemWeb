@@ -35,7 +35,7 @@ include './header.php';
                                 <div class="card" style="width: 25rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">Total de Ingreso:</h5>                                   
-                                        <p class="card-text"><?php echo $pagoU['totalpagar']; ?> Soles</p>
+                                        <p class="card-text"><?php echo round($pagoU['totalpagar'],2); ?> Soles</p>
                                     </div>
                                 </div>
                             </div>
@@ -43,7 +43,7 @@ include './header.php';
                                 <div class="card" style="width: 25rem;">
                                     <div class="card-body">
                                         <h5 class="card-title">Total de Descuento:</h5>
-                                        <p class="card-text"><?php echo $pagoU['descuentos']; ?> Soles</p>
+                                        <p class="card-text"><?php echo round($pagoU['descuentos'],2); ?> Soles</p>
                                     </div>
                                 </div>
                             </div>
