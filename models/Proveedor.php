@@ -148,9 +148,9 @@ class Proveedor {
         $serverName = "DESKTOP-2CQJBIO\SQLEXPRESS";
         $connectionInfo = array("Database" => "Bs_ADMIN", "UID" => "", "PWD" => "");
         $conn = sqlsrv_connect($serverName, $connectionInfo);
-        $sql = "UPDATE proveedor_fruto SET password=(?)where idproveedor=(?)";
-        $params = array($this->password,$this->idProveedor);
+        $sql = "UPDATE proveedor_fruto SET password=(?) where idproveedor=(?)";
+        $params = array($this->password, $this->idProveedor);
         $stmt = sqlsrv_query($conn, $sql, $params);
     }
-
+    
 }

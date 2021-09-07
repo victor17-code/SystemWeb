@@ -4,6 +4,7 @@ spl_autoload_register(function ($nombre_clase) {
     $directorys = array(
         'controllers/',
         'models/',
+        'librerias/',
     );
 
     foreach ($directorys as $directory) {

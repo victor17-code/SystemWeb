@@ -15,32 +15,44 @@ include './header.php';
                     </div>
                     <?php
                     if (isset($_POST['update'])) {
-                        $antiguo = $_POST['antiguo'];
-                        $nuevo = $_POST['nuevo'];
-                        if ($antiguo == $nuevo) {
-                            $updateProveedor = new ControllerProveedor();
-                            $updateProveedor->cambiarPassword($_POST);
+                        $idProvedor = new ControllerProveedor();
+                        $Prov = $idProvedor->mostrarUsuario($id);
+                        foreach ($Prov as $usario) {
+                            $idProv = $usario['idproveedor'];
+                            $passwordAntigua = $usario['password'];
+                        }
+                        if ($passwordAntigua == $_POST['antiguo']) {
+                            if($_POST['nuevo1'] == $_POST['nuevo2']) {
+                                $updateProveedor = new ControllerProveedor();
+                                $updateProveedor->cambiarPassword($idProv, $_POST['nuevo1']);
+                                echo "<script>window.setTimeout(function() { window.location = '../views/login.php' }, 3000);</script>";
+                                session_destroy();                                
+                            }else{
+                                echo 'LA NUEVA CONTRASEÑA NO COINCIDEN';
+                            }
+                        } else {
+                            echo "CONTRASEÑA ANTIGUA NO COINCIDE";
                         }
                     }
                     ?>
                     <div class="box-body"> 
-                        <form method="POST">
+                        <form method="POST" action="">
                             <div class="form-group row">
-                                <label for="staticEmail" class="col-sm-2 col-form-label">Usuario:</label>
+                                <label for="staticEmail" class="col-sm-2 col-form-label">Contraseña Antigua:</label>
                                 <div class="col-sm-5">
-                                    <input type="text" disabled="" class="form-control" value="<?php echo $_SESSION['nom_usuario']; ?>" placeholder="Nombre Usuario">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="inputPassword" class="col-sm-2 col-form-label">Contraseña Antigua:</label>
-                                <div class="col-sm-5">
-                                    <input type="password" name="antiguo" class="form-control" id="inputPassword" placeholder="Contraseña Antigua">
+                                    <input type="password" class="form-control" name="antiguo" placeholder="Contraseña Antigua">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputPassword" class="col-sm-2 col-form-label">Contraseña Nueva:</label>
                                 <div class="col-sm-5">
-                                    <input type="password" name="nuevo" class="form-control" id="inputPassword" placeholder="Contraseña Nueva">
+                                    <input type="password" name="nuevo1" class="form-control" id="inputPassword" placeholder="Contraseña Nueva">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Confirmar Contraseña:</label>
+                                <div class="col-sm-5">
+                                    <input type="password" name="nuevo2" class="form-control" id="inputPassword" placeholder="Confirmar Contraseña">
                                 </div>
                             </div>
                             <button type="submit" name="update" class="btn btn-success">Cambiar</button>
@@ -56,37 +68,6 @@ include './header.php';
 include './footer.php';
 ?>
 
-<script>
-    $(function () {
-        //$('#example1').DataTable()
-        $('#example1').DataTable({
-            'buttons': [
-                'excel', 'pdf', 'print'
-            ],
-            'paging': true,
-            'lengthChange': true,
-            'searching': true,
-            'ordering': true,
-            'info': true,
-            'autoWidth': true,
-            'dom': 'Bfrtip',
-            'language': {
-                "lengthMenu": "Mostrar _MENU_ registros por página.",
-                "zeroRecords": "Lo sentimos. No se encontraron registros.",
-                "sInfo": "Mostrando: _START_ de _END_ - Total registros: _TOTAL_ ",
-                "infoEmpty": "No hay registros aún.",
-                "infoFiltered": "(filtrados de un total de _MAX_ registros)",
-                "search": "Búsqueda",
-                "LoadingRecords": "Cargando ...",
-                "Processing": "Procesando...",
-                "SearchPlaceholder": "Comience a teclear...",
-                "paginate": {
-                    "previous": "Anterior",
-                    "next": "Siguiente",
-                }}
-        })
-    })
-</script>
 
 
 

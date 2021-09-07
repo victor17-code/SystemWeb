@@ -18,61 +18,63 @@ include './header.php';
                     if (isset($_POST['update'])) {
                         $updateProveedor = new ControllerProveedor();
                         $updateProveedor->updateProveedor($_POST);
+                        echo "<script>window.setTimeout(function() { window.location = '../views/login.php' }, 3000);</script>";
+                        session_destroy();
                     }
                     ?>
 
                     <div class="box-body"> 
                         <form method="POST">
-                            <?php                          
-                                $idProvedor = new ControllerProveedor();
-                                $Prov = $idProvedor->mostrarUsuario($id);
-                                foreach ($Prov as $usario) {
-                                    ?>
-                                    <div class="form-row">                           
-                                        <input type="hidden" name="idproveedor" value="<?php echo $usario['idproveedor'];  ?>" class="form-control" id="inputEmail4">                               
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEmail4">Nombres Y Apellidos</label>
-                                            <input type="text" disabled="" value="<?php  echo $usario['nombres']; ?>" class="form-control" id="inputEmail4">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Dni</label>
-                                            <input type="number" disabled="" value="<?php echo $usario['numdni']; ?>" class="form-control" id="inputPassword4">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputEmail4">Ruc</label>
-                                            <input type="text" disabled="" value="<?php echo $usario['numruc']; ?>" class="form-control" id="inputEmail4">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Sector</label>
-                                            <input type="text" disabled="" value="<?php echo $usario['direccion']; ?>" class="form-control" id="inputPassword4">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Accionista</label>
-                                            <input type="text" disabled="" value="<?php echo $usario['accionista']; ?>" class="form-control" id="inputPassword4">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Nombre Usuario</label>
-                                            <input type="text" name="usuario" value="<?php echo $usario['nom_usuario']; ?>" class="form-control" id="inputPassword4" placeholder="Ingrese Nombre usuario">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="inputPassword4">Telefono</label>
-                                            <input type="number" name="telefono" value="<?php echo $usario['telefono']; ?>" class="form-control" id="inputPassword4" placeholder="Ingrese Telefono">
-                                        </div>
-                                        <?php } ?>
-                                        <div class="form-group col-md-8">
-                                            <button type="submit" name="update" class="btn btn-primary">Guardar</button>
-                                        </div>
-                                    </div>                           
-                                </form>
-                            </div>
-                        </div>
+                            <?php
+                            $idProvedor = new ControllerProveedor();
+                            $Prov = $idProvedor->mostrarUsuario($id);
+                            foreach ($Prov as $usario) {
+                                ?>
+                                <div class="form-row">                           
+                                    <input type="hidden" name="idproveedor" value="<?php echo $usario['idproveedor']; ?>" class="form-control" id="inputEmail4">                               
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Nombres Y Apellidos</label>
+                                        <input type="text" disabled="" value="<?php echo $usario['nombres']; ?>" class="form-control" id="inputEmail4">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Dni</label>
+                                        <input type="number" disabled="" value="<?php echo $usario['numdni']; ?>" class="form-control" id="inputPassword4">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Ruc</label>
+                                        <input type="text" disabled="" value="<?php echo $usario['numruc']; ?>" class="form-control" id="inputEmail4">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Sector</label>
+                                        <input type="text" disabled="" value="<?php echo $usario['direccion']; ?>" class="form-control" id="inputPassword4">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Accionista</label>
+                                        <input type="text" disabled="" value="<?php echo $usario['accionista']; ?>" class="form-control" id="inputPassword4">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Nombre Usuario</label>
+                                        <input type="text" name="usuario" value="<?php echo $usario['nom_usuario']; ?>" class="form-control" id="inputPassword4" placeholder="Ingrese Nombre usuario">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Telefono</label>
+                                        <input type="text" minlength="9" maxlength="9" name="telefono" value="<?php echo $usario['telefono']; ?>" class="form-control" id="inputPassword4" placeholder="Ingrese Telefono">
+                                    </div>                                  
+                                <?php } ?>
+                                <div class="form-group col-md-8">
+                                    <button type="submit" name="update" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </div>                           
+                        </form>
                     </div>
                 </div>
-            </section>
+            </div>
         </div>
-        <?php
-        include './footer.php';
-        ?>
+    </section>
+</div>
+<?php
+include './footer.php';
+?>
 
 <script>
     $(function () {

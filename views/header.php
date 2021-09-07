@@ -117,8 +117,8 @@ $id = $_SESSION['id_proveedor'];
                             <img src="../imagenes/FotoTamañoCarnet.jpg" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-<!--                            <p></p>-->
-                            <a href="#"><i class="fa fa-circle text-success"></i> En Linea</a>
+                            <p><?php echo $_SESSION['nom_usuario'];?></p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> En Linea</a>                          
                         </div>
                     </div>
                     <!-- search form -->

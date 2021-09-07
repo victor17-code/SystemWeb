@@ -1,6 +1,11 @@
 <?php
 include '../bd/autoload.php';
 include './header.php';
+
+if(isset($_POST['reporte'])){
+    $reporte = new ControllerPeso();
+    $generarReporte = $reporte->generarPDFPeso(1);
+}
 ?>
 <div class="content-wrapper">
     <section class="content">
@@ -36,8 +41,16 @@ include './header.php';
                             $controller = new ControllerPeso();
                             $ConsulPeso = $controller->mostrarPeso($idProveedor, $fechaIn, $fechaFin);
                             ?>
-                            <div class="box-body" style="text-align: center">
-                                <p>REPORTE DE PESO RFF DE: <?php echo $fechaIn; ?> HASTA : <?php echo $fechaFin; ?></p>
+                            <div class="box-body">
+                                <div class="col-xs-9">
+                                    <p>REPORTE DE PESO RFF DE: <?php echo $fechaIn; ?> HASTA : <?php echo $fechaFin; ?></p>
+                                </div>
+                                <div class="col-xs-3">
+                                    <form method="POST">
+                                        <button type="submit" name="reporte">GENERAR REPORTE</button>
+                                    </form>                                   
+                                </div>
+                                
                             </div>
                             <div class="box-body" style="text-align: center">
                                 <table id="example1" class="table table-bordered table-hover" >

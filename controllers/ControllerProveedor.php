@@ -18,12 +18,10 @@ class ControllerProveedor {
         $proveedor->setNombreUsuario($datos['usuario']);
         $proveedor->UpdateProveedorFruto();
     }
-    public function cambiarPassword(array $datos) {
-        $proveedor = new Proveedor();
-        if (isset($datos['idproveedor'])) {
-            $proveedor->setIdProveedor($datos['idproveedor']);
-        }
-        $proveedor->setPassword($datos['telefono']);       
+    public function cambiarPassword($id, $pass) {
+        $proveedor = new Proveedor();               
+        $proveedor->setPassword($pass); 
+        $proveedor->setIdProveedor($id);
         $proveedor->cambiarPassword();
     }
 
