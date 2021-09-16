@@ -71,7 +71,7 @@ session_start();
                             <!-- User Account: style can be found in dropdown.less -->
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="../imagenes/FotoTamañoCarnet.jpg" class="user-image" alt="User Image">
+                                    <img src="../imagenes/logo-user.jpg" class="user-image" alt="User Image">
                                     <span class="hidden-xs"><?php echo $_SESSION['nombres'];
 $id = $_SESSION['id_proveedor'];
 ?></span>
@@ -79,11 +79,15 @@ $id = $_SESSION['id_proveedor'];
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="../imagenes/FotoTamañoCarnet.jpg" class="img-circle" alt="User Image">
+                                        <img src="../imagenes/logo-user.jpg" class="img-circle" alt="User Image">
 
                                         <p>
 <?php echo $_SESSION['nombres']; ?>
-                                            <small>Member since Nov. 2012</small>
+                             <!--    formato de fecha-->
+                                            <small><?php
+                                            echo date('d/m/Y');
+                                            ?></small>
+                             
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
@@ -114,7 +118,7 @@ $id = $_SESSION['id_proveedor'];
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="../imagenes/FotoTamañoCarnet.jpg" class="img-circle" alt="User Image">
+                            <img src="../imagenes/logo-user.jpg" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
                             <p><?php echo $_SESSION['nom_usuario'];?></p>

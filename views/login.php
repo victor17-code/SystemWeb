@@ -26,7 +26,7 @@ if (isset($_POST['ingresar'])) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>LOGIN_COLEGIO</title>
+        <title>Bienvenido a Olpasa</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -51,14 +51,13 @@ if (isset($_POST['ingresar'])) {
 
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>    
-    <body class="hold-transition login-page" style="background-image:url(../imagenes/FONDO-LOGIN.jpeg)">
+    <body class="hold-transition login-page" style="background-image:url(../imagenes/fondo_login.jpg)">
         <!--        <div id="alertSi" class="alert alert-success alert-dismissable fade show">Login OK</div>
                 <div id="alertNo" class="alert alert-danger" role="alert">complete los datos</div>-->
         <div class="login-box">
-            <!--  <div class="login-logo">
-                  <a href="#"><b> <img src="../imagenes/olpasa-logo.PNG" style="width: 350px; height: 150px"> </a>
-              </div>-->
-            <!-- /.login-logo -->
+              <div class="login-logo">
+                  <a href="#"><b> <img src="../imagenes/olpasa-logo.PNG" style="width: 360px; height: 150px"> </a>
+              </div>
             <div class="login-box-body">
                 <p class="login-box-msg">LOGIN</p>
 

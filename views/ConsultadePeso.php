@@ -62,7 +62,6 @@ if(isset($_POST['reporte'])){
                                             <th scope="col">Peso Ingreso</th>
                                             <th scope="col">Peso Salida</th>
                                             <th scope="col">Peso Neto</th>
-                                            <th scope="col">Ver</th>
                                         </tr>
                                     </thead>
                                     <?php
@@ -75,7 +74,6 @@ if(isset($_POST['reporte'])){
                                             <td><?php echo $Consulta['pesoing']; ?></td>
                                             <td><?php echo $Consulta['pesosalida']; ?></td>
                                             <td><?php echo $Consulta['pesoneto']; ?></td>
-                                            <td><a type="submit" href="#" class="btn btn-success"><i class="far fa-file-pdf"></i></a></td>
                                         </tr>
                                     <?php } ?>
                                 </table>

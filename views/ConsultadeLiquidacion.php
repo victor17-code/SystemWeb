@@ -14,7 +14,7 @@ include './header.php';
                         </h1>
                     </div>
 
-                    <div class="box-body" > 
+                    <div class="box-body"> 
                         <form class="form-inline" method="POST">
                             <div class="form-group mx-sm-3 mb-2">
                                 <label for="password" class="">De:  </label>
@@ -38,7 +38,7 @@ include './header.php';
                             $CLiquidacion = $controller->mostrarLiquidacion($idProveedor, $fechaIn, $fechaFin);
                             ?>
                             <div class="box-body" style="text-align: center">
-                                <p>REPORTE DE LIQUIDACION DE: <?php echo $fechaIn;?> HASTA : <?php echo $fechaFin;?></p>
+                                <p>REPORTE DE LIQUIDACION DE: <?php echo $fechaIn; ?> HASTA : <?php echo $fechaFin; ?></p>
                             </div>
                             <div class="box-body" style="text-align: center">
                                 <table id="example1" class="table table-bordered table-hover" >
@@ -51,7 +51,7 @@ include './header.php';
                                             <th scope="col">Peso Neto</th>
                                             <th scope="col">Retenciones</th>
                                             <th scope="col">Neto a Pagar</th>
-                                            <th scope="col">Ver</th>
+                                            <th scope="col">Ver Detalles</th>
                                         </tr>
                                     </thead>
                                     <?php
@@ -63,9 +63,9 @@ include './header.php';
                                             <td><?php echo $Consulta['fecha']; ?></td>
                                             <td><?php echo $Consulta['precio']; ?></td>
                                             <td><?php echo $Consulta['pesototal']; ?></td>
-                                            <td><?php echo round($Consulta['descuentos'],2); ?></td>
-                                            <td><?php echo round($Consulta['totalpagar'],2); ?></td>
-                                            <td><a type="submit" href="#" class="btn btn-success"><i class="far fa-file-pdf"></i></a></td>
+                                            <td><?php echo round($Consulta['descuentos'], 2); ?></td>
+                                            <td><?php echo round($Consulta['totalpagar'], 2); ?></td>
+                                            <td><a id="idInforme" href="DetalleLiquidacion.php?idI=<?php echo $Consulta['idinforme'] ?>" class="btn btn-success"><i class="far fa-eye"></i></a></td>
                                         </tr>
                                     <?php } ?>
                                 </table>
@@ -75,7 +75,7 @@ include './header.php';
                                 </div>
                             <?php } ?>
                         </div>
-                    </div>
+                    </div>                  
                 </div>
             </div>
     </section>

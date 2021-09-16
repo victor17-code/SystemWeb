@@ -9,7 +9,10 @@ class ControllerPeso {
         return $peso->mostrarPesoPorFecha($idProveedor, $fechaIn, $fechaFin);
     }
 
-    
+    public function mostrarPesoPlanilla($idProveedor, $fechaIn, $fechaFin, $idInforme) {
+        $pesoPlanilla = new PesoRFF();
+        return $pesoPlanilla->mostrarPesoPorPlanilla($idProveedor, $fechaIn, $fechaFin, $idInforme);
+    }
 
 }
 

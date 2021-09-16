@@ -93,6 +93,15 @@ class PesoRFF {
                 where pro.idproveedor='$idProveedor' and c.fechacarga between 
                 '$fechaIn' and '$fechaFin' order by c.fechacarga desc";
         return $conexion->query($sql);
-        echo 'id proveedor'+$idProveedor;
+    }
+    
+    function mostrarPesoPorPlanilla($idProveedor,$fechaIn,$fechaFin,$idInforme) {
+        require_once '../bd/Conexion-Sql-Server.php';
+        $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "", "");
+        $sql = "select convert(date,c.fechacarga) as fecha,c.numticket,c.pesoneto,round(iq.precio*c.pesoneto,2) as importe,iq.montodolares,
+        iq.pesototal,iq.montototal,iq.descuentos,iq.totalpagar from cargas as c inner join informequincenal as iq on c.idproveedor=iq.idproveedor
+        where c.fechacarga between '$fechaIn' and '$fechaFin'
+        and c.idproveedor='$idProveedor' and iq.idinforme='$idInforme'";
+        return $conexion->query($sql);
     }
 }
