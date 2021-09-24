@@ -88,7 +88,7 @@ class PesoRFF {
     function mostrarPesoPorFecha($idProveedor,$fechaIn,$fechaFin) {
         require_once '../bd/Conexion-Sql-Server.php';
         $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "", "");
-        $sql = "select c.numticket,c.fechacarga, pro.nombres as proveedor,c.pesoing,c.pesosalida,c.pesoneto
+        $sql = "select c.numticket,convert(date,c.fechacarga) as fecha, pro.nombres as proveedor,c.pesoing,c.pesosalida,c.pesoneto
                 from proveedor_fruto as pro inner join cargas as c on pro.idproveedor=c.idproveedor
                 where pro.idproveedor='$idProveedor' and c.fechacarga between 
                 '$fechaIn' and '$fechaFin' order by c.fechacarga desc";

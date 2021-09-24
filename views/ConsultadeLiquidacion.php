@@ -7,7 +7,7 @@ include './header.php';
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <div class="box-header">
+                    <div class="box-header p-3 mb-2 bg-black-gradient text-white">
                         <h1 class="col-xs-12">
                             <i class="fas fa-book"></i>
                             CONSULTA DE LIQUIDACIÓN
@@ -31,7 +31,7 @@ include './header.php';
                         if (isset($_POST['procesar'])) {
                             $idProveedor = $id;
                             $fechaIn = $_POST['de'];
-                            $fechaFin = $_POST['hasta'];
+                            $fechaFin = $_POST['hasta'];                         
                             ?>           
                             <?php
                             $controller = new ControllerLiquidacion();

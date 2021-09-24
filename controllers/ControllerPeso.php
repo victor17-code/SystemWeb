@@ -13,6 +13,8 @@ class ControllerPeso {
         $pesoPlanilla = new PesoRFF();
         return $pesoPlanilla->mostrarPesoPorPlanilla($idProveedor, $fechaIn, $fechaFin, $idInforme);
     }
+    
+    
 
 }
 

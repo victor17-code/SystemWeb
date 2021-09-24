@@ -1,18 +1,13 @@
 <?php
 include '../bd/autoload.php';
 include './header.php';
-
-if(isset($_POST['reporte'])){
-    $reporte = new ControllerPeso();
-    $generarReporte = $reporte->generarPDFPeso(1);
-}
 ?>
 <div class="content-wrapper">
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <div class="box-header">
+                    <div class="box-header p-3 mb-2 bg-black-gradient text-white">
                         <h1 class="col-xs-12">
                             <i class="fas fa-balance-scale"></i>
                             CONSULTA DE PESO RFF
@@ -36,24 +31,26 @@ if(isset($_POST['reporte'])){
                             $idProveedor = $id;
                             $fechaIn = $_POST['de'];
                             $fechaFin = $_POST['hasta'];
+                            $_SESSION['de']=$_POST['de'];
+                            $_SESSION['hasta']=$_POST['hasta'];
                             ?>           
                             <?php
                             $controller = new ControllerPeso();
                             $ConsulPeso = $controller->mostrarPeso($idProveedor, $fechaIn, $fechaFin);
                             ?>
                             <div class="box-body">
-                                <div class="col-xs-9">
+                                <div class="col-xs-10">
                                     <p>REPORTE DE PESO RFF DE: <?php echo $fechaIn; ?> HASTA : <?php echo $fechaFin; ?></p>
                                 </div>
-                                <div class="col-xs-3">
-                                    <form method="POST">
-                                        <button type="submit" name="reporte">GENERAR REPORTE</button>
+                                <div class="col-xs-2">
+                                    <form method="POST" action="ReportePeso.php" target="_black">
+                                        <button type="submit" name="reporte" class="btn btn-success">GENERAR REPORTE</button>
                                     </form>                                   
                                 </div>
                                 
                             </div>
                             <div class="box-body" style="text-align: center">
-                                <table id="example1" class="table table-bordered table-hover" >
+                                <table id="example1" class="table table-bordered" >
                                     <thead>
                                         <tr>
                                             <th scope="col">N° Tiket</th>
@@ -69,7 +66,7 @@ if(isset($_POST['reporte'])){
                                         ?>
                                         <tr>
                                             <th><?php echo $Consulta['numticket']; ?></th>
-                                            <td><?php echo $Consulta['fechacarga']; ?></td>
+                                            <td><?php echo $Consulta['fecha']; ?></td>
                                             <td><?php echo $Consulta['proveedor']; ?></td>
                                             <td><?php echo $Consulta['pesoing']; ?></td>
                                             <td><?php echo $Consulta['pesosalida']; ?></td>

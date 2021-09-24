@@ -18,7 +18,7 @@ if (isset($_POST['ingresar'])) {
 
         header("Location: ../views/index.php");
     } else {
-        header("Location: ../views/login.php");
+        header("Location: ../views/login.php");       
     }
 }
 ?>
@@ -26,7 +26,7 @@ if (isset($_POST['ingresar'])) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Bienvenido a Olpasa</title>
+        <title>Bienvenido a Olpasa</title>      
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.7 -->
@@ -55,79 +55,78 @@ if (isset($_POST['ingresar'])) {
         <!--        <div id="alertSi" class="alert alert-success alert-dismissable fade show">Login OK</div>
                 <div id="alertNo" class="alert alert-danger" role="alert">complete los datos</div>-->
         <div class="login-box">
-              <div class="login-logo">
-                  <a href="#"><b> <img src="../imagenes/olpasa-logo.PNG" style="width: 360px; height: 150px"> </a>
-              </div>
-            <div class="login-box-body">
-                <p class="login-box-msg">LOGIN</p>
-
-                <form action="" method="post">
-                    <div class="form-group has-feedback">
-                        <input id="user" class="form-control" placeholder="Usuario" name="nom_usuario">
-                        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-                    </div>
-                    <div class="form-group has-feedback">
-                        <input id="pass" type="password" class="form-control" placeholder="Contraseña" name="pass">
-                        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-8">
-                            <div class="checkbox icheck">
-                                <label>
-                                    <input type="checkbox"> Recordar Mis Datos
-                                </label>
-                            </div>
+            <div class="login-logo">
+                <a href="#"><b> <img src="../imagenes/olpasa-logo.PNG" style="width: 360px; height: 150px"> </a>
                         </div>
-                        <!-- /.col -->
-                        <div class="col-xs-4">
-                            <button type="submit" class="btn btn-primary btn-block btn-flat" name="ingresar">Ingresar</button>                           
-                        </div>                       
-                        <!-- /.col -->
-                    </div>
-                </form>
+                        <div class="login-box-body">
+                            <p class="login-box-msg">LOGIN</p>
+
+                            <form action="" method="post">
+                                <div class="form-group has-feedback">
+                                    <input id="user" class="form-control" placeholder="Usuario" name="nom_usuario">
+                                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                </div>
+                                <div class="form-group has-feedback">
+                                    <input id="pass" type="password" class="form-control" placeholder="Contraseña" name="pass">
+                                    <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <div class="checkbox icheck">
+                                            <label>
+                                                <input type="checkbox"> Recordar Mis Datos
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <!-- /.col -->
+                                    <div class="col-xs-4">
+                                        <button type="submit" class="btn btn-primary btn-block btn-flat" name="ingresar">Ingresar</button>                           
+                                    </div>                       
+                                    <!-- /.col -->
+                                </div>
+                            </form>
 
 
-                <!-- /.social-auth-links -->
+                            <!--INICIO MODAL -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-exclamation-triangle"></i>Error</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <h4>Usuario/Contraseña Incorrectos</h4>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--                   FIN MODAL-->
 
-            </div>
-            <!-- /.login-box-body -->
-        </div>
-        <!-- /.login-box -->
+                        </div>
+                        <!-- /.login-box-body -->
+                        </div>
 
-        <!-- jQuery 3 -->
-        <script src="../lib/bower_components/jquery/dist/jquery.min.js"></script>
-        <!-- Bootstrap 3.3.7 -->
-        <script src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-        <!-- iCheck -->
-        <script src="../lib/plugins/iCheck/icheck.min.js"></script>
-        <script>
-            $(function () {
-                $('input').iCheck({
-                    checkboxClass: 'icheckbox_square-blue',
-                    radioClass: 'iradio_square-blue',
-                    increaseArea: '20%' /* optional */
-                });
-            });
-        </script>
-<!--        <script>
-            $(document).ready(function () {
-                $("#alertSi").hide();
-                $("#alertNo").hide();
-                $("#form1").submit(function (e) {
-                    e.preventDefault();
-                    user = $.trim($("#user").val());
-                    pass = $.trim($("#pass").val());
-                    if (user.length > 0 && pass.length > 0) {
-                        $("#alertSi").fadeTo(2000, 500).slideUp(500, function () {
-                            $("#alertSi").slideUp(500);
-                        });
-                    } else {
-                        $("#alertNo").fadeTo(2000, 500).slideUp(500, function () {
-                            $("#alertNo").slideUp(500);
-                        });
-                    }
-                });
-            });
-        </script>-->
-    </body>
-</html>
+                        <!-- jQuery 3 -->
+                        <script src="../lib/bower_components/jquery/dist/jquery.min.js"></script>
+                        <!-- Bootstrap 3.3.7 -->
+                        <script src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+                        <!-- iCheck -->
+                        <script src="../lib/plugins/iCheck/icheck.min.js"></script>
+                        <script>
+                            $(function () {
+                                $('input').iCheck({
+                                    checkboxClass: 'icheckbox_square-blue',
+                                    radioClass: 'iradio_square-blue',
+                                    increaseArea: '20%' /* optional */
+                                });
+                            });
+                        </script>
+                        </body>
+                        </html>
