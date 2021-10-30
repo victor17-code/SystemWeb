@@ -104,7 +104,7 @@ class Proveedor {
 
     public function ValidarUsuario() {
         include '../bd/Conexion-Sql-Server.php';
-        $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "", "");
+        $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "user", "user");
         try {
             $result = $conexion->prepare('SELECT idproveedor, codigopro, nombres, numdni, estado, telefono, nom_usuario, password, numruc, direccion, accionista '
                     . ' FROM proveedor_fruto '
@@ -139,8 +139,9 @@ class Proveedor {
 
     function mostrarUsuario($idProveedor) {
         require_once '../bd/Conexion-Sql-Server.php';
-        $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "", "");
-        $sql = "select * from proveedor_fruto where idproveedor= $idProveedor";
+        $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "user", "user");
+        $sql = "SELECT * FROM 
+                proveedor_fruto AS pr inner join sector as s on pr.idsector=s.idsector where idproveedor='$idProveedor'";
         return $conexion->query($sql);
     }
     

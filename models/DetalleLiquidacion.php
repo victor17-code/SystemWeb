@@ -86,7 +86,7 @@ class DetalleLiquidacion {
 
     function mostrarLiquidacionPorProveedor($idProveedor,$idInforme) {
         require_once '../bd/Conexion-Sql-Server.php';
-        $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "", "");
+        $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "user", "user");
         $sql = "SELECT i.mesinforme,i.idinforme, i.fecha_inicial as desde,i.fecha as hasta, pr.nombres,pr.numdni,i.tipocambio,s.nombre,dl.preciouni,
         pr.idproveedor,i.montodolares FROM informequincenal
         AS i INNER JOIN proveedor_fruto AS pr on i.idproveedor=pr.idproveedor

@@ -3,9 +3,9 @@
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-        <b>Version</b> 2.1
+        <b>Version</b> 2.4.13
     </div>
-    <strong><a href="https://olpasa.pe">OLPASA.PE</a>.</strong>
+    <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE</a>.</strong> All rights reserved.
 </footer>
 
 <!-- Control Sidebar -->
@@ -248,7 +248,10 @@
 <script src="../lib/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../lib/dist/js/demo.js"></script>
-<script src="https://kit.fontawesome.com/d4c1407c59.js" crossorigin="anonymous"></script>
 
+<script src="https://kit.fontawesome.com/d4c1407c59.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js" 
+integrity="sha512-Wt1bJGtlnMtGP0dqNFH1xlkLBNpEodaiQ8ZN5JLA5wpc1sUlk/O5uuOMNgvzddzkpvZ9GLyYNa8w2s7rqiTk5Q==" 
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

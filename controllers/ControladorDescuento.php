@@ -4,9 +4,9 @@ include '../bd/autoload.php';
 
 class ControladorDescuento {
 
-    public function descuentos($idProveedor, $fechaIn, $fechaFin) {
+    public function descuentos($idProveedor, $nomPlanilla) {
         $descuento = new Descuentos();
-        return $descuento->descuento($idProveedor, $fechaIn, $fechaFin);
+        return $descuento->descuento($idProveedor, $nomPlanilla);
     }
 
 }

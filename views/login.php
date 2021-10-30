@@ -18,7 +18,8 @@ if (isset($_POST['ingresar'])) {
 
         header("Location: ../views/index.php");
     } else {
-        header("Location: ../views/login.php");       
+        header("Location: ../views/login.php");
+        echo "CONTRASEÑA O USUARIO INVALIDO";
     }
 }
 ?>
@@ -49,9 +50,11 @@ if (isset($_POST['ingresar'])) {
 
         <!-- Google Font -->
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">     
+        <link rel="stylesheet" href="../plugin/SweetAlert/dist/sweetalert2.min.css">
+        <script src="../plugin/SweetAlert/alert.js" type="text/javascript"></script>
     </head>    
-    <body class="hold-transition login-page" style="background-image:url(../imagenes/fondo_login.jpg)">
+    <body class="hold-transition login-page" style="background-image: url(../imagenes/GRASS-FONDO.JPG); background-position: center;background-size: cover;">
         <!--        <div id="alertSi" class="alert alert-success alert-dismissable fade show">Login OK</div>
                 <div id="alertNo" class="alert alert-danger" role="alert">complete los datos</div>-->
         <div class="login-box">
@@ -59,7 +62,7 @@ if (isset($_POST['ingresar'])) {
                 <a href="#"><b> <img src="../imagenes/olpasa-logo.PNG" style="width: 360px; height: 150px"> </a>
                         </div>
                         <div class="login-box-body">
-                            <p class="login-box-msg">LOGIN</p>
+                            <p class="login-box-msg">BIENVENIDO</p>
 
                             <form action="" method="post">
                                 <div class="form-group has-feedback">
@@ -71,44 +74,21 @@ if (isset($_POST['ingresar'])) {
                                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
                                 <div class="row">
-                                    <div class="col-xs-8">
-                                        <div class="checkbox icheck">
-                                            <label>
-                                                <input type="checkbox"> Recordar Mis Datos
-                                            </label>
-                                        </div>
+                                    <div class="col-xs-6">
+                                        <button type="submit" class="btn btn-success btn-block btn-flat" name="ingresar">INGRESAR</button>
                                     </div>
                                     <!-- /.col -->
-                                    <div class="col-xs-4">
-                                        <button type="submit" class="btn btn-primary btn-block btn-flat" name="ingresar">Ingresar</button>                           
+                                    <div class="col-xs-6">
+                                        <a href="https://olpasa.pe/" class="btn btn-danger btn-block btn-flat">CANCELAR</a>                                     
                                     </div>                       
                                     <!-- /.col -->
                                 </div>
-                            </form>
-
-
-                            <!--INICIO MODAL -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-exclamation-triangle"></i>Error</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h4>Usuario/Contraseña Incorrectos</h4>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--                   FIN MODAL-->
-
+<!--                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <p>Contraseña y usuario solicitar a la empres OLPASA S.A</p>
+                                    </div>                               
+                                </div>-->
+                            </form>                           
                         </div>
                         <!-- /.login-box-body -->
                         </div>
@@ -119,14 +99,6 @@ if (isset($_POST['ingresar'])) {
                         <script src="../lib/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
                         <!-- iCheck -->
                         <script src="../lib/plugins/iCheck/icheck.min.js"></script>
-                        <script>
-                            $(function () {
-                                $('input').iCheck({
-                                    checkboxClass: 'icheckbox_square-blue',
-                                    radioClass: 'iradio_square-blue',
-                                    increaseArea: '20%' /* optional */
-                                });
-                            });
-                        </script>
+                        <script src="../plugin/SweetAlert/dist/sweetalert2.all.min.js"></script>                                             
                         </body>
-                        </html>
+                        </html>                       

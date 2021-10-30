@@ -29,11 +29,11 @@ class Descuentos {
         $this->montoDescontado = $montoDescontado;
     }
 
-    function descuento($idProveedor,$fechaIn,$fechaFin) {
+    function descuento($idProveedor,$nomPlanilla) {
         require_once '../bd/Conexion-Sql-Server.php';
-        $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "", "");
-        $sql = "select formadescuento,montohaber from descuento
-                where fechades between '$fechaIn' and '$fechaFin' and idproveedor='$idProveedor'";
+        $conexion = new PDO("sqlsrv:server=DESKTOP-2CQJBIO\SQLEXPRESS;database=Bs_ADMIN", "user", "user");
+        $sql = "select * from descuento inner join credito on descuento.idcredito=credito.idcredito "
+              ." where nombreinf='$nomPlanilla' and idproveedor='$idProveedor'";
         return $conexion->query($sql);
     }
 }

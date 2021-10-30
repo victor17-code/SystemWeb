@@ -1,5 +1,14 @@
 <?php
 session_start();
+if(isset($_POST['salir'])){
+    session_destroy();
+    header("Location: ../views/login.php");   
+}
+if($_SESSION['nombres'] != null){
+    
+}else{
+   header("Location: ../views/login.php"); 
+}
 ?>
 <html>
     <head>
@@ -31,15 +40,8 @@ session_start();
         <link rel="stylesheet" href="../lib/bower_components/bootstrap-daterangepicker/daterangepicker.css">
         <!-- bootstrap wysihtml5 - text editor -->
         <link rel="stylesheet" href="../lib/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <!-- Google Font -->
+        <link rel="stylesheet" href="../lib/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+      
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
     </head>
     <body class="hold-transition skin-blue sidebar-mini">
@@ -47,66 +49,53 @@ session_start();
 
             <header class="main-header">
                 <!-- Logo -->
-                <a href="index2.html" class="logo">
+                <a href="index.php" class="logo">
                     <!-- mini logo for sidebar mini 50x50 pixels -->
-                    <span class="logo-mini"><b>O.S.A</b></span>
+                    <span class="logo-mini"><b>OLP</b></span>
                     <!-- logo for regular state and mobile devices -->
-                    <span class="logo-lg"><b>OLPASA </b>S.A</span>
+                    <span class="logo-lg"><b>OLPASA</b></span>
                 </a>
-                <!-- Header Navbar: style can be found in header.less -->
                 <nav class="navbar navbar-static-top">
-                    <!-- Sidebar toggle button-->
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                         <span class="sr-only">Toggle navigation</span>
                     </a>
 
                     <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <!-- Messages: style can be found in dropdown.less-->
-
-                            <!-- Notifications: style can be found in dropdown.less -->
-
-                            <!-- Tasks: style can be found in dropdown.less -->
-
-                            <!-- User Account: style can be found in dropdown.less -->
+                        <ul class="nav navbar-nav">                      
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="../imagenes/logo-user.jpg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs"><?php echo $_SESSION['nombres'];
-$id = $_SESSION['id_proveedor'];
-?></span>
+                                    <img src="../imagenes/logoindividual.png" class="user-image" alt="User Image">
+                                    <span class="hidden-xs"><?php
+                                        echo $_SESSION['nombres'];
+                                        $id = $_SESSION['id_proveedor'];
+                                        ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="../imagenes/logo-user.jpg" class="img-circle" alt="User Image">
+                                        <img src="../imagenes/logoindividual.png" class="img-circle" alt="User Image">
 
                                         <p>
-<?php echo $_SESSION['nombres']; ?>
-                             <!--    formato de fecha-->
+                                            <?php echo $_SESSION['nombres']; ?>
+                                            <!--    formato de fecha-->
                                             <small><?php
-                                            echo date('d/m/Y');
-                                            ?></small>
-                             
-                                        </p>
-                                    </li>
-                                    <!-- Menu Body -->
+                                                echo date('d/m/Y');
+                                                ?></small>
 
-                                    <!-- Menu Footer-->
+                                        </p>
+                                    </li>                                   
                                     <li class="user-footer">
                                         <div class="pull-left">
                                             <a href="InfoUsuario.php" class="btn btn-default btn-flat">Perfil</a>
                                         </div>
                                         <div class="pull-right">
-                                            <a href="login.php" class="btn btn-default btn-flat">Salir</a>
+                                            <form method="post">
+                                            <button type="submit" name="salir" class="btn btn-default btn-flat">Salir</button>
+                                            </form>
                                         </div>
                                     </li>
                                 </ul>
-                            </li>
-                            <!-- Control Sidebar Toggle Button -->
-<!--                            <li>
-                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                            </li>-->
+                            </li>                            
                         </ul>
                     </div>
                 </nav>
@@ -118,10 +107,10 @@ $id = $_SESSION['id_proveedor'];
                     <!-- Sidebar user panel -->
                     <div class="user-panel">
                         <div class="pull-left image">
-                            <img src="../imagenes/logo-user.jpg" class="img-circle" alt="User Image">
+                            <img src="../imagenes/logoindividual.png" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
-                            <p><?php echo $_SESSION['nom_usuario'];?></p>
+                            <p><?php echo $_SESSION['nom_usuario']; ?></p>
                             <a href="#"><i class="fa fa-circle text-success"></i> En Linea</a>                          
                         </div>
                     </div>
@@ -147,13 +136,7 @@ $id = $_SESSION['id_proveedor'];
                                 <i class="fas fa-tachometer-alt"></i>
                                 <span> Dashboard</span>
                                 <span class="pull-right-container"></span>
-                            </a>
-                            <!--                            <ul class="treeview-menu">
-                                                            <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                                                            <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                                                            <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                                                            <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-                                                        </ul>-->
+                            </a>                           
                         </li>
                         <li class="treeview">
                             <a href="#">
@@ -165,20 +148,7 @@ $id = $_SESSION['id_proveedor'];
                                 <li><a href="ConsultadePeso.php"><i class="fa fa-circle-o"></i> Consulta de peso RFF</a></li>
                                 <li><a href="ConsultadeLiquidacion.php"><i class="fa fa-circle-o"></i> Consulta de Liquidación</a></li>                               
                             </ul>
-                        </li>
-                        <!--                        <li class="treeview">
-                                                    <a href="#">
-                                                        <i class="far fa-clipboard"></i>
-                                                        <span>Consulta de Liquidación</span>
-                                                        <span class="pull-right-container"></span>
-                                                    </a>
-                                                    <ul class="treeview-menu">
-                                                        <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                                                        <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                                                        <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                                                        <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
-                                                    </ul>
-                                                </li>-->
+                        </li>                       
                         <li class="treeview">
                             <a href="#">
                                 <i class="fas fa-cogs"></i>
@@ -190,13 +160,13 @@ $id = $_SESSION['id_proveedor'];
                                 <li><a href="ConfigurarPassword.php"><i class="fa fa-circle-o"></i> Cambiar Contraseña</a></li>                               
                             </ul>
                         </li>
-                        <li>
+<!--                        <li>
                             <a href="login.php">
                                 <i class="fas fa-sign-out-alt"></i>
                                 <span>Cerrar Sesión</span>
                                 <span class="pull-right-container"></span>
                             </a>
-                        </li>
+                        </li>-->
                     </ul>          
                 </section>
             </aside>

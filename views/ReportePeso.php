@@ -74,23 +74,22 @@ $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->SetFont('Arial', 'B', 10);
 
-
+$total = 0;
 $controller = new ControllerPeso();
 $ConsulPeso = $controller->mostrarPeso($_SESSION['id_proveedor'], $_SESSION['de'], $_SESSION['hasta']);
-foreach ($ConsulPeso as $report) {    
+foreach ($ConsulPeso as $report) {
     $pdf->SetFont('Arial', '', 10);
     $pdf->Cell(38, 10, $report['fecha'], 1, 0, 'C', 0);
     $pdf->Cell(38, 10, $report['numticket'], 1, 0, 'C', 0);
-    $pdf->Cell(38, 10, $report['pesoing'], 1, 0, 'C', 0);
-    $pdf->Cell(38, 10, $report['pesosalida'], 1, 0, 'C', 0);
+    $pdf->Cell(38, 10, number_format($report['pesoing']), 1, 0, 'C', 0);
+    $pdf->Cell(38, 10, number_format($report['pesosalida']), 1, 0, 'C', 0);
     $pdf->Cell(38, 10, $report['pesoneto'], 1, 1, 'C', 0);
-    
-    $suma = array_sum(array_column($report,'c.pesoneto'));
+    $total = $total + $report['pesoneto'];
 }
 
 $pdf->Cell(114, 10, '', 0, 0, 'C', 0);
 $pdf->Cell(38, 10, 'Peso (KG)', 1, 0, 'C', 0);
-$pdf->Cell(38, 10, $suma, 1, 1, 'C', 0);
+$pdf->Cell(38, 10, number_format($total, 2), 1, 1, 'C', 0);
 
 
 $pdf->Output();

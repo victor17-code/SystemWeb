@@ -3,17 +3,25 @@ include '../bd/autoload.php';
 include './header.php';
 ?>
 <div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            <i class="fas fa-info"></i>
+            Informacion del Palmicultor
+            <small>Control panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Informacion del Palmicultor</li>
+        </ol>
+    </section>
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
-                <div class="box">
-                    <div class="box-header p-3 mb-2 bg-black-gradient text-white">
-                        <h1 class="col-xs-12">
-                            <i class="fas fa-info-circle"></i>
-                            INFORMACION DE USUARIO
-                        </h1>
+                <div class="box box-success">
+                    <div class="box-header">
+                        <i class="fas fa-folder-open"></i>
+                        <h3 class="box-title">Datos del Palmicultor</h3>                                      
                     </div>
-
                     <?php
                     if (isset($_POST['update'])) {
                         $updateProveedor = new ControllerProveedor();
@@ -46,7 +54,7 @@ include './header.php';
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Sector</label>
-                                        <input type="text" disabled="" value="<?php echo $usario['direccion']; ?>" class="form-control" id="inputPassword4">
+                                        <input type="text" disabled="" value="<?php echo $usario['nombre']; ?>" class="form-control" id="inputPassword4">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Accionista</label>
@@ -62,7 +70,7 @@ include './header.php';
                                     </div>                                  
                                 <?php } ?>
                                 <div class="form-group col-md-8">
-                                    <button type="submit" name="update" class="btn btn-primary">Guardar</button>
+                                    <button type="submit" name="update" class="btn btn-primary"><i class="fas fa-user-edit"></i> ACTUALIZAR</button>
                                 </div>
                             </div>                           
                         </form>
